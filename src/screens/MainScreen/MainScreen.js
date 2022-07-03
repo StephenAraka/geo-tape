@@ -17,9 +17,9 @@ const FarmsScreen = () => {
 
   // const measurements = [];
 
-  const onLoginPressed = () => {
+  const onNewMeasurementPressed = () => {
     // TODO: add logic
-    navigation.navigate('Main');
+    navigation.navigate('NewMeasurement');
   };
 
   return (
@@ -40,7 +40,7 @@ const FarmsScreen = () => {
           )}
         </View>
 
-        <Button onPress={onLoginPressed} text="New Measurement" />
+        <Button onPress={onNewMeasurementPressed} text="New Measurement" />
 
       </View>
     </ScrollView>

@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import React from 'react';
 
-const Button = ({ text, onPress, type = 'PRIMARY' }) => {
+const Button = ({ disabled = false, text, onPress, type = 'PRIMARY' }) => {
   return (
     <Pressable
+      disabled={disabled}
       onPress={onPress}
       style={[styles.container, styles[`container_${type}`]]}>
       <Text style={[styles.text, styles[`text_${type}`]]}>{text}</Text>
