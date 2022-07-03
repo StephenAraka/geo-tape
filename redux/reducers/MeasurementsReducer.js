@@ -2,8 +2,7 @@ import { combineReducers } from 'redux';
 
 const INITIAL_STATE = {
   current: [
-    { name: "Farm 1", distance: "3km" },
-    { name: "House Distance", distance: "0.7km" },
+
   ],
 };
 
@@ -23,10 +22,18 @@ const measurementsReducer = (state = INITIAL_STATE, action) => {
       // Finally, update the redux state
       const newState = { current };
 
-      console.warn(newState.current.length)
-
-
       return newState;
+
+    case 'DELETE_MEASUREMENT':
+      const measurements = state.current;
+
+      const index = action.payload;
+
+      if (index > -1) { // only splice array when item is found
+        measurements.splice(index, 1); // 2nd parameter means remove one item only
+      }
+
+      return { current: measurements };
 
     default:
       return state
