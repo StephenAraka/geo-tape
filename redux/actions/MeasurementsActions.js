@@ -4,3 +4,10 @@ export const addMeasurement = (measurement) => (
     payload: measurement,
   }
 );
+
+export const deleteMeasurement = (id) => (
+  {
+    type: 'DELETE_MEASUREMENT',
+    payload: id,
+  }
+);

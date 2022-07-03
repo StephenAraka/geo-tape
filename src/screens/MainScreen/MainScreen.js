@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { deleteMeasurement } from '../../../redux/actions/MeasurementsActions';
 
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
@@ -8,17 +10,13 @@ import Button from '../../components/Button';
 import { useNavigation } from '@react-navigation/native';
 
 
-const MainScreen = ({ measurements }) => {
+const MainScreen = ({ deleteMeasurement, measurements }) => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
 
   const onNewMeasurementPressed = () => {
     navigation.navigate('NewMeasurement');
   };
-
-  useEffect(() => {
-    // console.warn(measurements.current.length)
-  }, [measurements])
 
 
   return (
@@ -35,6 +33,8 @@ const MainScreen = ({ measurements }) => {
                 bgColor="#D9E7E5"
                 title={measurement.name}
                 subtitle={measurement.distance}
+                onDelete={() => deleteMeasurement(index)}
+              // onEdit={}
               />
             ))
           )}
@@ -81,4 +81,10 @@ const mapStateToProps = (state) => {
   return { measurements }
 };
 
-export default connect(mapStateToProps)(MainScreen);
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    deleteMeasurement,
+  }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
