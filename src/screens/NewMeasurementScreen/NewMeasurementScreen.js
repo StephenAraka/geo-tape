@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addMeasurement } from '../../../redux/actions/MeasurementsActions';
+
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { useNavigation } from '@react-navigation/native';
 
-const NewMeasurementScreen = () => {
+const NewMeasurementScreen = ({ addMeasurement }) => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
   const [measurementName, setName] = useState('');
@@ -16,10 +20,9 @@ const NewMeasurementScreen = () => {
   const onSavePressed = () => {
     if (!measurementName || !pointA || !pointB) return;
 
-    // TODO: add logic
-    console.warn(measurementName, pointA, pointB);
+    addMeasurement({ name: "The Walk", distance: "1.19km" });
 
-    navigation.navigate('NewMeasurement');
+    navigation.navigate('Main');
   };
 
   return (
@@ -83,4 +86,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NewMeasurementScreen;
+
+const mapStateToProps = (state) => {
+  const { measurements } = state
+  return { measurements }
+};
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    addMeasurement,
+  }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewMeasurementScreen);

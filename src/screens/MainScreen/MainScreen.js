@@ -1,37 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
 import SmallCard from '../../components/SmallCard';
 import Button from '../../components/Button';
 import { useNavigation } from '@react-navigation/native';
 
-const FarmsScreen = () => {
+
+const MainScreen = ({ measurements }) => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
 
-  const measurements = [
-    { name: "Farm 1", distance: "3km" },
-    { name: "House Distance", distance: "0.7km" },
-    { name: "The Walk", distance: "1.19km" },
-  ];
-
-  // const measurements = [];
-
   const onNewMeasurementPressed = () => {
-    // TODO: add logic
     navigation.navigate('NewMeasurement');
   };
+
+  useEffect(() => {
+    // console.warn(measurements.current.length)
+  }, [measurements])
+
 
   return (
     <ScrollView>
       <View style={[styles.root, { minHeight: height * 0.9 }]}>
         <Text style={styles.screenTitle}>Measurements</Text>
         <View style={styles.list}>
-          {!measurements.length ? (
+          {!measurements.current.length ? (
             <Text style={styles.screenSubTitle}>You have no measurements! Click "New Measurement" to begin.</Text>
           ) : (
-            measurements.map((measurement) => (
+            measurements.current.map((measurement, index) => (
               <SmallCard
+                key={index}
                 bgColor="#D9E7E5"
                 title={measurement.name}
                 subtitle={measurement.distance}
@@ -76,4 +76,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FarmsScreen;
+const mapStateToProps = (state) => {
+  const { measurements } = state
+  return { measurements }
+};
+
+export default connect(mapStateToProps)(MainScreen);
