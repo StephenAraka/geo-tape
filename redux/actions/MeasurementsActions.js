@@ -11,3 +11,9 @@ export const deleteMeasurement = (id) => (
     payload: id,
   }
 );
+
+export const getMeasurements = () => (
+  {
+    type: 'FETCH_MEASUREMENTS',
+  }
+);

@@ -35,6 +35,9 @@ const measurementsReducer = (state = INITIAL_STATE, action) => {
 
       return { current: measurements };
 
+    case 'FETCH_MEASUREMENTS':
+      return state;
+
     default:
       return state
   }
