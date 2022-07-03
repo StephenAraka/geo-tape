@@ -52,14 +52,14 @@ const styles = StyleSheet.create({
   },
   screenTitle: {
     marginVertical: 20,
-    color: '#27AE60',
+    color: '#ff9800',
     fontWeight: 'bold',
     fontSize: 24,
     textAlign: 'center',
   },
   screenSubTitle: {
     textAlign: 'center',
-    color: '#000',
+    color: 'gray',
     fontSize: 17,
     justifyContent: 'center',
   },

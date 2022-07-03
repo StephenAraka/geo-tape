@@ -24,27 +24,22 @@ const styles = StyleSheet.create({
   },
 
   container_PRIMARY: {
-    backgroundColor: '#27AE60',
+    backgroundColor: '#ff9800',
   },
 
   container_SECONDARY: {
-    borderColor: '#27AE60',
+    borderColor: 'gray',
     borderWidth: 2,
+    backgroundColor: '#ccc',
   },
-
-  container_TERTIARY: {},
 
   text: {
     fontWeight: 'bold',
     color: 'white',
   },
 
-  text_TERTIARY: {
-    color: 'gray',
-  },
-
   text_SECONDARY: {
-    color: '#27AE60',
+    color: 'gray',
   },
 });
 
