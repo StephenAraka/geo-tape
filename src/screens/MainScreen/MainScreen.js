@@ -7,13 +7,15 @@ import { useNavigation } from '@react-navigation/native';
 
 const FarmsScreen = () => {
   const { height } = useWindowDimensions();
-  // const measurements = [
-  //   { name: "Farm 1", distance: "3km" },
-  //   { name: "House Distance", distance: "0.7km" },
-  //   { name: "The Walk", distance: "1.19km" },
-  // ];
+  const navigation = useNavigation();
 
-  const measurements = [];
+  const measurements = [
+    { name: "Farm 1", distance: "3km" },
+    { name: "House Distance", distance: "0.7km" },
+    { name: "The Walk", distance: "1.19km" },
+  ];
+
+  // const measurements = [];
 
   const onLoginPressed = () => {
     // TODO: add logic
@@ -33,7 +35,6 @@ const FarmsScreen = () => {
                 bgColor="#D9E7E5"
                 title={measurement.name}
                 subtitle={measurement.distance}
-                text="Delete | Edit"
               />
             ))
           )}
