@@ -30,6 +30,8 @@ _Below are some screenshots of screens from the running application:_
 
 
 _Below is a demo of the application:_
+
+
 ![Demo](docs/images//geotape.gif)
 
 
