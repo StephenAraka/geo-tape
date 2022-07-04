@@ -5,7 +5,7 @@ import Bin from '../../../assets/bin.png';
 import Edit from '../../../assets/edit.png';
 
 const SmallCard = ({ onEdit, onDelete, key, subtitle, title, bgColor = '#fff' }) => {
-  const onEditPressed = () => { console.warn('Edit'); }
+  const onEditPressed = (key) => { null } // TODO: implement edit
 
   return (
     <View style={styles.card} backgroundColor={bgColor}>
