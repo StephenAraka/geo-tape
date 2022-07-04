@@ -4,14 +4,14 @@ import React from 'react';
 import Bin from '../../../assets/bin.png';
 import Edit from '../../../assets/edit.png';
 
-const SmallCard = ({ measurements, onEdit, onDelete, key, subtitle, title, bgColor = '#fff' }) => {
+const SmallCard = ({ onEdit, onDelete, key, subtitle, title, bgColor = '#fff' }) => {
   const onEditPressed = () => { console.warn('Edit'); }
 
   return (
     <View style={styles.card} backgroundColor={bgColor}>
       <View style={styles.left}>
         <Text style={styles.infoTitle}>{title}</Text>
-        <Text style={styles.subtitle}>{subtitle}</Text>
+        <Text style={styles.subtitle}>{subtitle} km</Text>
       </View>
       <Text style={styles.buttons}>
         <Pressable onPress={onDelete} style={styles.iconBtn}>

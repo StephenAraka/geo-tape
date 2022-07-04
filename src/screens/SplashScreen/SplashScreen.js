@@ -13,7 +13,13 @@ const SplashScreen = ({ getMeasurements, measurements }) => {
 
   useEffect(() => {
     getMeasurements();
-    navigation.navigate('Main');
+    let timer = setTimeout(() => navigation.navigate('Main'), 1000);
+
+    // set a timer to rerout the screen after a 1 second delay
+    // then clear the Timeout
+    return () => {
+      clearTimeout(timer);
+    };
   }, [])
 
   return (
