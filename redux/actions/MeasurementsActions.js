@@ -17,3 +17,10 @@ export const getMeasurements = () => (
     type: 'FETCH_MEASUREMENTS',
   }
 );
+
+export const editMeasurement = (measurement, index) => (
+  {
+    type: 'ADD_MEASUREMENT',
+    payload: { measurement, index },
+  }
+);

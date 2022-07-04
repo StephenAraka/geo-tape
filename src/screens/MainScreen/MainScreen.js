@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { deleteMeasurement } from '../../../redux/actions/MeasurementsActions';
+import { deleteMeasurement, editMeasurement } from '../../../redux/actions/MeasurementsActions';
 
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
@@ -34,7 +34,7 @@ const MainScreen = ({ deleteMeasurement, measurements }) => {
                 title={measurement.name}
                 subtitle={measurement.distance}
                 onDelete={() => deleteMeasurement(index)}
-              // onEdit={}
+              // onEdit={() => deleteMeasurement(index)}
               />
             ))
           )}
@@ -83,7 +83,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    deleteMeasurement
+    deleteMeasurement,
+    editMeasurement
   }, dispatch)
 );
 

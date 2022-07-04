@@ -38,6 +38,17 @@ const measurementsReducer = (state = INITIAL_STATE, action) => {
     case 'FETCH_MEASUREMENTS':
       return state;
 
+    case 'EDIT_MEASUREMENT':
+      let currentElements = state.current;
+
+      const indexToReplace = action.payload.index;
+
+      if (indexToReplace !== -1) {
+        currentElements[indexToReplace] = action.payload.measurement;
+      }
+
+      return { current: currentElements };
+
     default:
       return state
   }
