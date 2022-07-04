@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getMeasurements } from '../../../redux/actions/MeasurementsActions';
 import { View, Image, StyleSheet, ScrollView } from 'react-native';
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
 import Logo from '../../../assets/logo.png';
 import { useNavigation } from '@react-navigation/native';
 
-const SignInScreen = () => {
+const SplashScreen = ({ getMeasurements, measurements }) => {
   const navigation = useNavigation();
   const { height } = useWindowDimensions();
 
-  // setTimeout(navigation.navigate('Main')
+  useEffect(() => {
+    getMeasurements();
+    let timer = setTimeout(() => navigation.navigate('Main'), 1000);
+
+    // set a timer to rerout the screen after a 1 second delay
+    // then clear the Timeout
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [])
 
   return (
     <ScrollView>
@@ -36,4 +48,15 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignInScreen;
+const mapStateToProps = (state) => {
+  const { measurements } = state
+  return { measurements }
+};
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    getMeasurements
+  }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen);
